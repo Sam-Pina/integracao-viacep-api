@@ -1,11 +1,13 @@
 package com.api.endereco_br.models;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "TB_ENDERECO")
 public class EnderecoRequestModel implements Serializable {
@@ -14,9 +16,14 @@ public class EnderecoRequestModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-
-    @Column(nullable = false, unique = true, length = 8)
+    @Column(length = 8)
     private String cep;
-
-    //cadastro dados da pessoa
+    @Column
+    private String nacionalidade;
+    @Column
+    private String nome;
+    @Column
+    private String idade;
+    @Column
+    private String profissao;
 }

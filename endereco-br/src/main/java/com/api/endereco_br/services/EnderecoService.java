@@ -6,6 +6,8 @@ import com.api.endereco_br.models.EnderecoResponseModel;
 import com.api.endereco_br.repositories.EnderecoRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class EnderecoService {
 
@@ -22,6 +24,8 @@ public class EnderecoService {
         return enderecoFeign.buscarEndereco(request.getCep());
     }
 
-
-
+    @Transactional
+    public EnderecoRequestModel cadastrar(EnderecoRequestModel enderecoRequestModel) {
+        return enderecoRepository.save(enderecoRequestModel);
+    }
 }
