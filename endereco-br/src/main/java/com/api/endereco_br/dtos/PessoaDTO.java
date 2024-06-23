@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CadastroPessoaDTO {
+public class PessoaDTO {
 
     @NotBlank
     private String nome;
@@ -20,6 +20,8 @@ public class CadastroPessoaDTO {
     private String idade;
     @NotBlank
     private String sexo;
+    @NotBlank
+    private String profissao;
     @NotBlank
     private String nacionalidade;
     @NotBlank

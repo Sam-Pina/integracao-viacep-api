@@ -1,12 +1,10 @@
 package com.api.endereco_br.services;
 
 import com.api.endereco_br.feign.EnderecoFeign;
-import com.api.endereco_br.models.EnderecoRequestModel;
-import com.api.endereco_br.models.EnderecoResponseModel;
+import com.api.endereco_br.models.EnderecoModel;
+import com.api.endereco_br.models.EnderecoModelResponse;
 import com.api.endereco_br.repositories.EnderecoRepository;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 
 @Service
 public class EnderecoService {
@@ -20,12 +18,7 @@ public class EnderecoService {
         this.enderecoFeign = enderecoFeign;
     }
 
-    public EnderecoResponseModel executar(EnderecoRequestModel request){
+    public EnderecoModelResponse executar(EnderecoModel request){
         return enderecoFeign.buscarEndereco(request.getCep());
-    }
-
-    @Transactional
-    public EnderecoRequestModel cadastrar(EnderecoRequestModel enderecoRequestModel) {
-        return enderecoRepository.save(enderecoRequestModel);
     }
 }

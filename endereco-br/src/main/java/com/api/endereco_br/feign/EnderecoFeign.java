@@ -1,6 +1,6 @@
 package com.api.endereco_br.feign;
 
-import com.api.endereco_br.models.EnderecoResponseModel;
+import com.api.endereco_br.models.EnderecoModelResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface EnderecoFeign {
 
     @GetMapping("{cep}/json")
-    EnderecoResponseModel buscarEndereco(@PathVariable("cep") String cep);
+    EnderecoModelResponse buscarEndereco(@PathVariable("cep") String cep);
 }

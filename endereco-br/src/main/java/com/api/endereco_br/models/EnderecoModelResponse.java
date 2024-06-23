@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class EnderecoResponseModel {
+public class EnderecoModelResponse {
 
     private String cep;
     private String logradouro;

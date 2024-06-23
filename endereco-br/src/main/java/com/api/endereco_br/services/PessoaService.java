@@ -1,37 +1,38 @@
 package com.api.endereco_br.services;
 
-import com.api.endereco_br.feign.EnderecoFeign;
-import com.api.endereco_br.models.EnderecoRequestModel;
-import com.api.endereco_br.models.EnderecoResponseModel;
-import com.api.endereco_br.repositories.EnderecoRepository;
+import com.api.endereco_br.models.PessoaModel;
+import com.api.endereco_br.repositories.PessoaRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class EnderecoService {
+public class PessoaService {
 
-    final EnderecoRepository enderecoRepository;
+    final PessoaRepository pessoaRepository;
 
-    final EnderecoFeign enderecoFeign;
-
-    public EnderecoService(EnderecoRepository enderecoRepository, EnderecoFeign enderecoFeign){
-        this.enderecoRepository = enderecoRepository;
-        this.enderecoFeign = enderecoFeign;
-    }
-
-    public EnderecoResponseModel executar(EnderecoRequestModel request){
-        return enderecoFeign.buscarEndereco(request.getCep());
+    public PessoaService(PessoaRepository pessoaRepository) {
+        this.pessoaRepository = pessoaRepository;
     }
 
     @Transactional
-    public EnderecoRequestModel cadastrar(EnderecoRequestModel enderecoRequestModel) {
-        return enderecoRepository.save(enderecoRequestModel);
+    public Object cadastrar(PessoaModel pessoaModel) {
+        return pessoaRepository.save(pessoaModel);
     }
 
-    public Optional<EnderecoRequestModel> findById(UUID id){
-        return enderecoRepository.findById(id);
+    public List<PessoaModel> getTodasPessoas() {
+        return pessoaRepository.findAll();
+    }
+
+    public Optional<PessoaModel> getPessoaId(Long id) {
+        return pessoaRepository.findById(id);
+    }
+
+    @Transactional
+    public void deletarPessoa(PessoaModel pessoaModel) {
+        pessoaRepository.delete(pessoaModel);
     }
 }
