@@ -16,14 +16,4 @@ public class EnderecoRequestModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Column(length = 8)
-    private String cep;
-    @Column
-    private String nacionalidade;
-    @Column
-    private String nome;
-    @Column
-    private String idade;
-    @Column
-    private String profissao;
 }
