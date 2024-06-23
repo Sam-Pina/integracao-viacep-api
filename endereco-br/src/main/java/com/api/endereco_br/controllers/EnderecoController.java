@@ -1,9 +1,8 @@
 package com.api.endereco_br.controllers;
 
 import com.api.endereco_br.models.EnderecoModel;
-import com.api.endereco_br.repositories.EnderecoRepository;
 import com.api.endereco_br.services.EnderecoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +17,8 @@ public class EnderecoController {
         this.enderecoService = enderecoService;
     }
 
-    @Autowired
-    private EnderecoRepository repository;
-
     @GetMapping
     public ResponseEntity consultaCep(@RequestBody EnderecoModel enderecoModel){
-        return ResponseEntity.ok(enderecoService.executar(enderecoModel));
+        return ResponseEntity.status(HttpStatus.OK).body(enderecoService.executar(enderecoModel));
     }
 }

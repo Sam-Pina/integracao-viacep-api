@@ -1,11 +1,13 @@
-package com.api.endereco_br.models;
+package com.api.endereco_br.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
-public class EnderecoModelResponse {
+@NoArgsConstructor
+public class EnderecoDTO {
 
     private String cep;
     private String logradouro;
@@ -17,4 +19,5 @@ public class EnderecoModelResponse {
     private String gia;
     private String ddd;
     private String siafi;
+    private String unidade;
 }

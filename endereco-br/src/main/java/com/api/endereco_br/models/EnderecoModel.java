@@ -5,7 +5,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,7 +15,7 @@ public class EnderecoModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Long id;
     @Size(max = 8)
     private String cep;
 }
